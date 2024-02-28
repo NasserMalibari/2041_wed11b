@@ -1,2 +1,0 @@
-([1-9][0-9]*)(,[1-9][0-9])*
-# note answer changes depending if you define a list to have greater than 1 element etc.

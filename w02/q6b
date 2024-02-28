@@ -1,1 +1,0 @@
-cat benchmarks.txt | sort -k4n -k1.8,1n
