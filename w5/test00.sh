@@ -1,5 +1,16 @@
 #!/bin/dash
 
+#######################
+#
+# Testing behaviour of adding a removed file
+# for COMP2041/9044 assignment.
+# Author: Nasser Malibari
+#
+#######################
+
+
+trap 'rm "$exp" "$actual" -rf "$temp_dir"' INT HUP QUIT TERM EXIT
+
 
 temp_dir=$(mktemp -d)
 
@@ -13,7 +24,7 @@ actual=$(mktemp)
 pushy-init 2>&1 $actual
 
 cat > "$exp" <<HERE
-"Initialised repository in .pushy"
+Initialized empty pushy repository in .pushy
 HERE
 
 if ! diff "$actual" "$exp" 2>&1 /dev/null
@@ -25,13 +36,54 @@ fi
 
 echo "abc" > a
 pushy-add a 2>&1 $actual
+cat > "$exp" <<HERE
+HERE
+
+
+if ! diff "$actual" "$exp" 2>&1 /dev/null
+then
+	echo "failed test!"
+	exit 1	
+fi
+
+
 pushy-commit -m "commit 1" 2>&1 $actual
+
+cat > "$exp" <<HERE
+Committed as commit 0
+HERE
+
+
+if ! diff "$actual" "$exp" 2>&1 /dev/null
+then
+	echo "failed test!"
+	exit 1	
+fi
 
 rm a
 pushy-add a 2>&1 $actual
+
+cat > "$exp" <<HERE
+HERE
+
+
+if ! diff "$actual" "$exp" 2>&1 /dev/null
+then
+	echo "failed test!"
+	exit 1	
+fi
+
 pushy-commit -m "removed file a" 2>&1 $actual
 
-rm -rdf .pushy
+cat > "$exp" <<HERE
+Committed as commit 1
+HERE
 
+
+if ! diff "$actual" "$exp" 2>&1 /dev/null
+then
+	echo "failed test!"
+	exit 1	
+fi
 
 
