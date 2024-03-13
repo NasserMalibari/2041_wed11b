@@ -27,7 +27,7 @@ cat > "$exp" <<HERE
 Initialized empty pushy repository in .pushy
 HERE
 
-if ! diff "$actual" "$exp" 2>&1 /dev/null
+if ! diff "$actual" "$exp" > /dev/null
 then
 	echo "failed test!"
 	exit 1	
@@ -40,7 +40,7 @@ cat > "$exp" <<HERE
 HERE
 
 
-if ! diff "$actual" "$exp" 2>&1 /dev/null
+if ! diff "$actual" "$exp" > /dev/null
 then
 	echo "failed test!"
 	exit 1	
@@ -54,7 +54,7 @@ Committed as commit 0
 HERE
 
 
-if ! diff "$actual" "$exp" 2>&1 /dev/null
+if ! diff "$actual" "$exp" > /dev/null
 then
 	echo "failed test!"
 	exit 1	
@@ -67,7 +67,7 @@ cat > "$exp" <<HERE
 HERE
 
 
-if ! diff "$actual" "$exp" 2>&1 /dev/null
+if ! diff "$actual" "$exp" > /dev/null
 then
 	echo "failed test!"
 	exit 1	
@@ -80,7 +80,7 @@ Committed as commit 1
 HERE
 
 
-if ! diff "$actual" "$exp" 2>&1 /dev/null
+if ! diff "$actual" "$exp" > /dev/null
 then
 	echo "failed test!"
 	exit 1	
