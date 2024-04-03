@@ -6,7 +6,7 @@ def main():
 
 
     # get the webpage
-    process = subprocess.run("wget -O- -q  https://www.unsw.edu.au/",
+    process = subprocess.run(f"wget -O- -q  {sys.argv[1]}",
                               shell=True, capture_output=True, text=True)
     
 
