@@ -16,3 +16,13 @@ while [ "$p" -lt "$limit" ]; do
   fi
   p=$((p + 1))
 done
+
+
+
+
+
+
+
+echo "$img" | grep -E "..." 
+
+exit_stat="$?"
